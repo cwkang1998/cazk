@@ -5,13 +5,13 @@ include "../node_modules/circomlib/circuits/poseidon.circom";
 include "../node_modules/circomlib/circuits/smt/smtverifier.circom";
 
 
-template CazkExclusion(nLevels) {
+template CazkExclusion(nLevels, isExclude) {
     var realNLevels = nLevels+1;
 
     // Exclusive proof generation
     component smtClaimExclude = SMTVerifier(realNLevels);
     smtClaimExists.enabled <== 1;
-	smtClaimExists.fnc <== 1; // 1 for exclusive proofs
+	smtClaimExists.fnc <== isExclude; // 1 for exclusive proofs
     for (var i=0; i<realNLevels; i++) {
 		smtClaimExists.siblings[i] <== censusSiblings[i];
 	}

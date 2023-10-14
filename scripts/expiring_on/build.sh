@@ -1,8 +1,8 @@
 #!/bin/bash
 
 PHASE1=../../pot14_final.ptau
-BUILD_DIR=../../build/cazk
-CIRCUIT_NAME=cazk_blockno_lt
+BUILD_DIR=../../build/cazk_expiring_on
+CIRCUIT_NAME=cazk_expiring_on
 
 if [ -f "$PHASE1" ]; then
     echo "Found Phase 1 ptau file"

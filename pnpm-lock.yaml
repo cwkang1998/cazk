@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@zk-kit/sparse-merkle-tree':
+    specifier: ^0.2.0
+    version: 0.2.0
   circomlib:
     specifier: ^2.0.2
     version: 2.0.5
@@ -527,6 +530,10 @@ packages:
   /@ungap/promise-all-settled@1.1.2:
     resolution: {integrity: sha512-sL/cEvJWAnClXw0wHk85/2L0G6Sj8UB0Ctc1TEMbKSsmpRosqhwj9gWgFRZSrBr2f9tiXISwNhCPmlfqUqyb9Q==}
     dev: true
+
+  /@zk-kit/sparse-merkle-tree@0.2.0:
+    resolution: {integrity: sha512-nG1zWnNz7wGAyLly73/Aqr5yM1cHNR52E2PR3nnANOXSVLZE3jdpVK0pogcAgss9auCVw0Wv8B49vhWxCIvZBg==}
+    dev: false
 
   /acorn-walk@8.2.0:
     resolution: {integrity: sha512-k+iyHEuPgSw6SbuDpGQM+06HQUa04DZ3o+F6CSzXMvvI5KMvnaEqXe+YVe555R9nn6GPt404fos4wcgpw12SDA==}

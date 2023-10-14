@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@zk-kit/incremental-merkle-tree':
+    specifier: ^1.1.0
+    version: 1.1.0
   '@zk-kit/sparse-merkle-tree':
     specifier: ^0.2.0
     version: 0.2.0
@@ -543,6 +546,10 @@ packages:
   /@ungap/promise-all-settled@1.1.2:
     resolution: {integrity: sha512-sL/cEvJWAnClXw0wHk85/2L0G6Sj8UB0Ctc1TEMbKSsmpRosqhwj9gWgFRZSrBr2f9tiXISwNhCPmlfqUqyb9Q==}
     dev: true
+
+  /@zk-kit/incremental-merkle-tree@1.1.0:
+    resolution: {integrity: sha512-WnNR/GQse3lX8zOHMU8zwhgX8u3qPoul8w4GjJ0WDHq+VGJimo7EGheRZ/ILeBQabnlzAerdv3vBqYBehBeoKA==}
+    dev: false
 
   /@zk-kit/sparse-merkle-tree@0.2.0:
     resolution: {integrity: sha512-nG1zWnNz7wGAyLly73/Aqr5yM1cHNR52E2PR3nnANOXSVLZE3jdpVK0pogcAgss9auCVw0Wv8B49vhWxCIvZBg==}

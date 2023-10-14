@@ -1,8 +1,8 @@
 #!/bin/bash
 
-PHASE1=../../pot19_final.ptau
-BUILD_DIR=../../build/cazk_exclusion
-CIRCUIT_NAME=cazk_exclusion
+PHASE1=../../pot16_final.ptau
+BUILD_DIR=../../build/m_inclusion
+CIRCUIT_NAME=m_inclusion
 
 if [ -f "$PHASE1" ]; then
     echo "Found Phase 1 ptau file"

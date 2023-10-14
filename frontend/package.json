@@ -1,0 +1,57 @@
+{
+  "name": "with-create-react-app",
+  "version": "0.1.66",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.13",
+    "@mui/system": "^5.14.13",
+    "@rainbow-me/rainbowkit": "^1.1.1",
+    "@testing-library/jest-dom": "^6.1.3",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/jest": "^29.5.2",
+    "@types/node": "^18.16.12",
+    "@types/react": "^18.2.21",
+    "antd": "^5.10.0",
+    "buffer": "npm:buffer@6.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.16.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^5.0.4",
+    "util": "0.12.4",
+    "viem": "^1.16.5",
+    "wagmi": "^1.4.3",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "dev": "pnpm run start",
+    "start": "PORT=3030 react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!@rainbow-me)/\"",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/react-dom": "^18.2.13"
+  }
+}

@@ -1,11 +1,9 @@
 
 import Home from './pages/Home';
-import Mint from './pages/Verify';
 import Header from './comp/Header/Header';
 
 import React, { Suspense, useEffect } from 'react';
 import {  Route, Routes, BrowserRouter, Navigate } from 'react-router-dom';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 import '@rainbow-me/rainbowkit/styles.css';
 
 import {
@@ -46,7 +44,6 @@ const App = () => {
   return (
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains}>
-        {/* <ConnectButton /> */}
         <Suspense fallback={null}>
           <BrowserRouter>
           <Header />

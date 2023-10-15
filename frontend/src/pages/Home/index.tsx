@@ -5,15 +5,6 @@ import { Menu } from 'antd';
 import { useState } from 'react';
 import { FlexAlignCenterSx } from '../../theme/utils';
 import Card from './Card';
-
-const ButtonStyle: SystemStyleObject<Theme> = {
-  background: 'linear-gradient(101deg,#27d59d 0%,#28bdd9 100.3%)',
-  color: '#ffffff',
-  ':disabled': {
-    background: 'grey',
-  },
-};
-
 const menuArr = [
   {
     key: 0,

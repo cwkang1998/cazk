@@ -3,35 +3,23 @@ import { Theme } from '@mui/material/styles/createTheme';
 import { SystemStyleObject } from '@mui/system/styleFunctionSx/styleFunctionSx';
 // import Button from 'components/Button';
 import React, { useEffect, useState } from 'react';
-import { Flex } from 'antd';
+import { Flex, Input } from 'antd';
+import { requestProof } from '../../api';
 
 
 const ClaimCard: SystemStyleObject<Theme> = {
   flexDirection: 'column',
   width: '300px',
-  border: '1px solid rgba(91,88,77,1)',
+  border: '0.5px solid rgba(91,88,77,1)',
   borderRadius: '20px',
   padding: '20px',
   color: '#ffffff',
   fontSize: '12px',
-  fontFamily: 'SourceHanSansCN-Medium, SourceHanSansCN',
   margin: '30px 20px',
 };
 
-const CardImg: SystemStyleObject<Theme> = {
-  fontSize: '12px',
-  color: '#9CA3AF',
-  lineHeight: '22px',
-  fontWeight: 400,
-  background: 'grey',
-  width: '100%',
-  textAlign: 'center',
-  borderRadius: '15px',
-  height: '200px'
-};
 const HeadText: SystemStyleObject<Theme> = {
   marginTop: '20px',
-  fontFamily: 'SourceHanSansCN-Regular',
   fontSize: '26px',
   color: '#000000',
   lineHeight: '22px',
@@ -54,27 +42,12 @@ const ButtonStyle: SystemStyleObject<Theme> = {
   },
 };
 
-// const DataLine: React.FC<{ title: string; num: string; total: string }> = ({ title, num, total }) => {
-//   return (
-//     <Box sx={[FlexAlignCenterSx, DataLineBox]}>
-//       <Box sx={[FlexAlignCenterSx, { width: '100%' }]}>
-//         <Box sx={[{ width: '18px', marginRight: '10px' }]} component={'img'} src={ARKLogo}></Box>
-//         <Box sx={[DataLineTitle]}>{title}</Box>
-//         <Box sx={[DataLineCoin]}>{num === 'NaN' ? 0 : num}</Box>
-//       </Box>
-//       <Box sx={[FlexAlignCenterSx, DataLineU]}>≈${total === 'NaN' ? 0 : total}</Box>
-//     </Box>
-//   );
-// };
-
 const Card: React.FC<{ name: string; content: string; num: number }> = ({ name, content, num }) => {
+  const [identifier, setIdentifier] = useState<string>("");
+  const OnRequestClick = async () => {
+    const res = await requestProof(identifier);
+  };
 
-  const OnRequestClick = ({ key }: any) => {
-    console.log('Request');
-  };
-  const OnDownloadClick = () => {
-    console.log('Download');
-  };
   return (
     <Box sx={[ClaimCard]}>
       <Box sx={[HeadText]}>
@@ -84,6 +57,7 @@ const Card: React.FC<{ name: string; content: string; num: number }> = ({ name, 
         {content}
       </Box>
       <Flex gap="middle" vertical align='center'>
+        <Input onChange={(e) => setIdentifier(e.target.value)}/>
         <Button
           onClick={OnRequestClick}
           fullWidth

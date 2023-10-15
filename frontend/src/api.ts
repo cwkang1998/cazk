@@ -20,7 +20,7 @@ export const requestProof = async (identifier: string) => {
 export const validateProof = async (proof: any) => {
   const result = await fetch(`${API_URL}/verify`, {
     method: 'POST',
-    body: JSON.stringify(proof),
+    body: proof,
     headers: {
       'Content-Type': 'application/json',
     },

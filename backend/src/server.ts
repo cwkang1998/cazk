@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from "cors";
 import { buildPoseidon } from 'circomlibjs';
-import { ChildNodes, SparseMerkleTree } from '@zk-kit/sparse-merkle-tree';
+import { ChildNodes, MerkleProof, SparseMerkleTree } from '@zk-kit/sparse-merkle-tree';
 import randData from './random-id.json';
 import { uint8arrToBigInt } from './utils';
 
@@ -21,7 +21,6 @@ const generateSMTProofFromAgeData = async (
   }
 
   const proof = smt.createProof(idHashed);
-  console.log(await smt.verifyProof(proof));
   return proof;
 };
 
@@ -44,16 +43,30 @@ const main = async () => {
 
   app.post('/generate', async (req, res) => {
     const { identifier } = req.body;
-    console.log(req)
 
     const proof = await globalSmt.createProof(uint8arrToBigInt(poseidon([identifier])));
-    return res.json(proof);
+    console.log(proof);
+    return res.json({
+      root: proof.root.toString(),
+      membership: proof.membership,
+      siblings: proof.siblings.map((s) => s.toString()),
+      entry: proof.entry.toString(),
+      matchingEntry: proof.matchingEntry?.toString()
+    });
   });
 
   app.post('/verify', async (req, res) => {
-    const sentProof = req.body;
+    const sentProof: MerkleProof = req.body;
+    console.log(sentProof);
 
-    const result = await globalSmt.verifyProof(sentProof);
+    const result = await globalSmt.verifyProof({
+      root: BigInt(sentProof.root),
+      membership: sentProof.membership,
+      siblings: sentProof.siblings.map((s) => BigInt(s)),
+      entry: sentProof.entry,
+      // matchingEntry: sentProof?.matchingEntry ?? (sentProof.matchingEntry as unknown as string).split(",")
+    });
+    console.log(result);
     return res.json({ success: result });
   });
 

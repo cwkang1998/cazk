@@ -26,7 +26,8 @@ export const validateProof = async (proof: any) => {
     },
   });
   if (result.ok) {
-    console.log(result.json());
+    const data = await result.json();
+    return data;
   } else {
     alert('error');
   }

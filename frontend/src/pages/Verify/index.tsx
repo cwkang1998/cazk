@@ -9,7 +9,8 @@ export default function Verify() {
   const [proofData, setProofData] = useState('');
   const tryVerify = async () => {
     const result = await validateProof(proofData);
-    alert(result);
+    console.log(result);
+    alert(result ? "Success!": "Failed");
   }
 
   return (

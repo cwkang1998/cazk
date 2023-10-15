@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from "cors";
 import { buildPoseidon } from 'circomlibjs';
-import { ChildNodes, MerkleProof, SparseMerkleTree } from '@zk-kit/sparse-merkle-tree';
+import { ChildNodes, Entry, MerkleProof, SparseMerkleTree } from '@zk-kit/sparse-merkle-tree';
 import randData from './random-id.json';
 import { uint8arrToBigInt } from './utils';
 
@@ -45,26 +45,25 @@ const main = async () => {
     const { identifier } = req.body;
 
     const proof = await globalSmt.createProof(uint8arrToBigInt(poseidon([identifier])));
-    console.log(proof);
+    console.log("before", proof);
     return res.json({
       root: proof.root.toString(),
       membership: proof.membership,
       siblings: proof.siblings.map((s) => s.toString()),
       entry: proof.entry.toString(),
-      matchingEntry: proof.matchingEntry?.toString()
+      matchingEntry: proof.matchingEntry?.map((me) => me.toString())
     });
   });
 
   app.post('/verify', async (req, res) => {
     const sentProof: MerkleProof = req.body;
-    console.log(sentProof);
 
     const result = await globalSmt.verifyProof({
       root: BigInt(sentProof.root),
       membership: sentProof.membership,
       siblings: sentProof.siblings.map((s) => BigInt(s)),
-      entry: sentProof.entry,
-      // matchingEntry: sentProof?.matchingEntry ?? (sentProof.matchingEntry as unknown as string).split(",")
+      entry: ([BigInt(sentProof.entry as unknown as string)]) as unknown as Entry,
+      matchingEntry: sentProof?.matchingEntry?.map((s) => BigInt(s)),
     });
     console.log(result);
     return res.json({ success: result });

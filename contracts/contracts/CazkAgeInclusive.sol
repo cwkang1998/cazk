@@ -1,33 +1,24 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.17;
+pragma solidity ^0.8.20;
 
-import "@zk-kit/incremental-merkle-tree.sol/IncrementalBinaryTree.sol";
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
 
-contract CazkAgeInclusive {
-    using IncrementalBinaryTree for IncrementalTreeData;
+contract CazkAgeInclusive is Ownable {
+    uint256 public merkleRoot;
 
-    IncrementalTreeData tree;
+    constructor() Ownable(msg.sender) {}
 
-    constructor(uint256[] initialData) {
-        // Init with zero values
-        tree.initWithDefaultZeroes(16);
-        for (uint8 i = 0; i < initialData.length; i++) {
-            tree.insert(initalData);
-        }
+    function setMerkleRoot(uint256 newRoot) external onlyOwner() {
+        require(newRoot != merkleRoot);
+        merkleRoot = newRoot;
     }
 
-    function _update(address from, address to, uint256 value) internal override {
-        super._update(from, to, value);
-        if(balanceOf(from) > 40) {
-            tree.insert(from);
-        } else {
-        }
-
+    function getMerkleroot() external view returns (uint256) {
+        return merkleRoot;
     }
 
-    function getMerkleRoot() external view {
-        return tree.root;
+    function verify(uint[] memory proofData) external view {
+        // to be implemented;
     }
 }

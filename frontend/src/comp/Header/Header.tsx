@@ -41,9 +41,9 @@ export default function Header() {
       <Box sx={[{ pt: [5, 5], rowGap: [3, null] }].concat([FlexJustifyBetweenSx, FlexAlignCenterSx] as any)}>
         <Box sx={[FlexCenterSx, { gap: [6, 6] }]}>
           <StyledLink to={'/proof'}>{'Proof'}</StyledLink>
-          <StyledLink to={'/mint'}>{'Mint'}</StyledLink>
+          <StyledLink to={'/verify'}>{'Verify'}</StyledLink>
         </Box>
-        {pathname === '/mint' ? <WalletActions /> : <></>}
+        {pathname === '/verify' ? <WalletActions /> : <></>}
       </Box>
     </MuiContainer>
   );

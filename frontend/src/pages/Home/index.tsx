@@ -17,16 +17,9 @@ const ButtonStyle: SystemStyleObject<Theme> = {
 const menuArr = [
   {
     key: 0,
-    text: 'Block Number',
-  },
-  {
-    key: 1,
-    text: 'Block TimeStamp',
-  },
-  {
-    key: 2,
-    text: 'Balance of Account',
-  },
+    title: 'Proof of > 18 Age',
+    content: 'Show that you are > 18 without revealing your actual age!'
+  }
 ];
 export default function Home() {
   const [dropdownNum, useDropdownNum] = useState(0);
@@ -34,22 +27,13 @@ export default function Home() {
     console.log(key);
     useDropdownNum(key);
   };
-  const menu = (
-    <Menu onClick={OnDropdownClick}>
-      {menuArr.map((item, idx) => (
-        <Menu.Item key={idx}>
-          <Box>{item.text}</Box>
-        </Menu.Item>
-      ))}
-    </Menu>
-  );
   return (
     <Box sx={[FlexAlignCenterSx, { flexDirection: 'column' }]}>
-      <Box sx={[{ textAlign: 'center', fontSize: '80px', margin: '50px 0 40px 0' }]}>Banner</Box>
-      <Box sx={[{ textAlign: 'center', fontSize: '30px', margin: '0 0 30px 0' }]}>Generate Proof Based On</Box>
+      <Box sx={[{ textAlign: 'center', fontSize: '80px', margin: '50px 0 40px 0' }]}>Cazk</Box>
+      <Box sx={[{ textAlign: 'center', fontSize: '30px', margin: '0 0 30px 0' }]}>powered by inclusion and exclusion proofs</Box>
       <Box sx={[FlexAlignCenterSx]}>
       {menuArr.map((item, idx) => (
-        <Card name={item.text} address={''} num={idx} />
+        <Card name={item.title} content={item.content} num={idx} />
       ))}
       </Box>
     </Box>

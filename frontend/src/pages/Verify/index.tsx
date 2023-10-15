@@ -3,7 +3,7 @@ import { Input, message, Upload } from 'antd';
 import { useState } from 'react';
 import { FlexAlignCenterSx } from '../../theme/utils';
 
-export default function Home() {
+export default function Verify() {
   const { TextArea } = Input;
   const [textarea, useTextarea] = useState('');
   const props = {
@@ -26,7 +26,7 @@ export default function Home() {
   };
   return (
     <Box sx={[FlexAlignCenterSx, { flexDirection: 'column' }]}>
-      <Box sx={[{ textAlign: 'center', fontSize: '30px', margin: '50px 0 30px 0' }]}>Exclusive NFT Mint</Box>
+      <Box sx={[{ textAlign: 'center', fontSize: '30px', margin: '50px 0 30px 0' }]}>Verify</Box>
       <Box>
         <Upload {...props}>
           <Button
@@ -61,7 +61,7 @@ export default function Home() {
             },
           ]}
         >
-          Mint
+          Verify
         </Button>
       </Box>
     </Box>

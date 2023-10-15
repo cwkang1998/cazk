@@ -1,10 +1,9 @@
 import { Box, Button } from '@mui/material';
-import Skeleton from '@mui/material/Skeleton';
 import { Theme } from '@mui/material/styles/createTheme';
 import { SystemStyleObject } from '@mui/system/styleFunctionSx/styleFunctionSx';
 // import Button from 'components/Button';
 import React, { useEffect, useState } from 'react';
-import { FlexAlignCenterSx, FlexJustifyBetweenSx } from '../../theme/utils';
+import { Flex } from 'antd';
 
 
 const ClaimCard: SystemStyleObject<Theme> = {
@@ -68,48 +67,33 @@ const ButtonStyle: SystemStyleObject<Theme> = {
 //   );
 // };
 
-const Card: React.FC<{ name: string; address: string; num: number }> = ({ name, address, num }) => {
+const Card: React.FC<{ name: string; content: string; num: number }> = ({ name, content, num }) => {
 
   const OnRequestClick = ({ key }: any) => {
-    // Request逻辑
     console.log('Request');
   };
   const OnDownloadClick = () => {
-    // Download逻辑
     console.log('Download');
   };
   return (
     <Box sx={[ClaimCard]}>
-      <Box sx={[CardImg]}>
-        IMG
-      </Box>
       <Box sx={[HeadText]}>
         {name}
       </Box>
       <Box sx={[BottomText]}>
-        test test test test test test test test test test test test test test test 
+        {content}
       </Box>
-      <Box sx={[FlexJustifyBetweenSx,{ width: '100%' }]}>
+      <Flex gap="middle" vertical align='center'>
         <Button
-          className="ant-dropdown-link"
           onClick={OnRequestClick}
+          fullWidth
           sx={[
             ButtonStyle,
           ]}
         >
-          Request
+          Generate
         </Button>
-        <Button
-          className="ant-dropdown-link"
-          onClick={OnDownloadClick}
-          disabled
-          sx={[
-            ButtonStyle,
-          ]}
-        >
-          Download
-        </Button>
-      </Box>
+      </Flex>
     </Box>
   );
 };

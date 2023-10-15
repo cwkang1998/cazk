@@ -1,6 +1,6 @@
 
 import Home from './pages/Home';
-import Mint from './pages/Mint';
+import Mint from './pages/Verify';
 import Header from './comp/Header/Header';
 
 import React, { Suspense, useEffect } from 'react';
@@ -23,6 +23,7 @@ import {
 } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
+import Verify from './pages/Verify';
 const { chains, publicClient } = configureChains(
   [mainnet, polygon, optimism, arbitrum, base, zora],
   [
@@ -52,7 +53,7 @@ const App = () => {
           <Routes>
             <Route path="/proof" element={<Home />}>
             </Route>
-            <Route path="/mint" element={<Mint />}>
+            <Route path="/verify" element={<Verify />}>
             </Route>
             <Route path="/" element={<Navigate to="/proof" />} />
             
